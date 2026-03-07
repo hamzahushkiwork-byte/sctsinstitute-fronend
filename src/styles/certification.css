@@ -1,0 +1,141 @@
+/* Certification List Page Styles */
+.certification-intro {
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+@media (max-width:450px) {
+  .certification-intro {
+    padding: 20px 10px;
+  }
+}
+
+.certification-intro-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.certification-intro-inner h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 24px;
+}
+
+.certification-intro-inner p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4a5568;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.certification-list {
+  padding: 60px 24px 100px;
+  background-color: #f7fafc;
+}
+
+.certification-list-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.certification-card {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.certification-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.certification-card-image-container {
+  width: 300px;
+  min-width: 300px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #e2e8f0;
+}
+
+.certification-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.certification-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e8f0;
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+.certification-card-content {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.certification-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 12px;
+}
+
+.certification-card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a5568;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.certification-card-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-top: auto;
+}
+
+.certification-card:hover .certification-card-link {
+  color: #764ba2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .certification-card {
+    flex-direction: column;
+  }
+
+  .certification-card-image-container {
+    width: 100%;
+    height: 240px;
+  }
+
+  .certification-card-content {
+    padding: 24px;
+  }
+
+  .certification-intro-inner h2 {
+    font-size: 2rem;
+  }
+}

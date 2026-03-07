@@ -1,0 +1,568 @@
+.about-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.about-hero-title {
+  font-size: 64px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.about-hero-arrow {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.about-hero-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(4px);
+}
+
+.about-hero-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Main Content Section */
+.about-content {
+  background: #ffffff;
+  padding: 100px 0;
+}
+
+.about-content-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+/* Left Column - Image */
+.about-image-column {
+  position: relative;
+}
+
+.about-image-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.about-doctor-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Floating Card */
+.about-floating-card {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 280px;
+  z-index: 2;
+  display: none;
+}
+
+.about-floating-card-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Right Column - Text Content */
+.about-text-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-content-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.about-content-paragraph {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a5568;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.about-content-tagline {
+  font-weight: 600;
+  color: #0d9488;
+  margin-top: 12px;
+}
+
+.about-content-subheading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 8px 0 0 0;
+  line-height: 1.3;
+}
+
+/* Our Values Section */
+.about-values-section {
+  margin-top: 80px;
+  padding-top: 80px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.about-values-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 48px 0;
+  line-height: 1.2;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.about-value-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.about-value-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.about-value-card-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Our Holistic Approach Section */
+.about-holistic-section {
+  margin-top: 80px;
+  padding-top: 80px;
+}
+
+.about-holistic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.about-holistic-image-column {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.about-holistic-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-holistic-content-column {
+  background: #111827;
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.about-holistic-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.about-holistic-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 20px 0;
+  text-transform: capitalize;
+}
+
+.about-holistic-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Our Achievements Section */
+.about-achievements-section {
+  margin-top: 80px;
+  padding-top: 80px;
+}
+
+.about-achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-achievements-image-column {
+  width: 100%;
+}
+
+.about-achievements-image-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.about-achievements-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.about-achievements-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-achievements-label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0;
+}
+
+.about-achievements-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.about-achievements-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .about-hero {
+    height: 500px;
+  }
+
+  .about-hero-title {
+    font-size: 48px;
+  }
+
+  .about-content-grid {
+    gap: 48px;
+  }
+
+  .about-content-heading {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    height: 400px;
+  }
+
+  .about-hero-title {
+    font-size: 36px;
+  }
+
+  .about-content {
+    padding: 60px 0 80px;
+  }
+
+  .about-content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-content-heading {
+    font-size: 32px;
+  }
+
+  .about-content-subheading {
+    font-size: 24px;
+  }
+
+  .about-floating-card {
+    bottom: 16px;
+    left: 16px;
+    padding: 16px 20px;
+    max-width: 240px;
+  }
+
+  .about-floating-card-text {
+    font-size: 14px;
+  }
+
+  .about-values-section {
+    margin-top: 60px;
+    padding-top: 60px;
+  }
+
+  .about-values-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .about-values-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-value-card {
+    padding: 24px;
+  }
+
+  .about-holistic-section {
+    margin-top: 60px;
+    padding-top: 60px;
+  }
+
+  .about-holistic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-holistic-image-column {
+    min-height: 400px;
+    order: 1;
+  }
+
+  .about-holistic-content-column {
+    order: 2;
+    padding: 48px 40px;
+  }
+
+  .about-holistic-title {
+    font-size: 32px;
+  }
+
+  .about-achievements-section {
+    margin-top: 60px;
+    padding-top: 60px;
+  }
+
+  .about-achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-achievements-image-column {
+    order: 1;
+  }
+
+  .about-achievements-content-column {
+    order: 2;
+  }
+
+  .about-achievements-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    height: 350px;
+  }
+
+  .about-hero-title {
+    font-size: 28px;
+  }
+
+  .about-hero-arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .about-content {
+    padding: 40px 0 60px;
+  }
+
+  .about-content-heading {
+    font-size: 28px;
+  }
+
+  .about-content-paragraph {
+    font-size: 15px;
+  }
+
+  .about-floating-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .about-values-section {
+    margin-top: 40px;
+    padding-top: 40px;
+  }
+
+  .about-values-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .about-value-card {
+    padding: 20px;
+  }
+
+  .about-value-card-title {
+    font-size: 20px;
+  }
+
+  .about-value-card-text {
+    font-size: 14px;
+  }
+
+  .about-holistic-section {
+    margin-top: 40px;
+    padding-top: 40px;
+  }
+
+  .about-holistic-image-column {
+    min-height: 300px;
+  }
+
+  .about-holistic-content-column {
+    padding: 40px 24px;
+  }
+
+  .about-holistic-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .about-holistic-text {
+    font-size: 15px;
+  }
+
+  .about-achievements-section {
+    margin-top: 40px;
+    padding-top: 40px;
+  }
+
+  .about-achievements-grid {
+    gap: 32px;
+  }
+
+  .about-achievements-title {
+    font-size: 32px;
+  }
+
+  .about-achievements-text {
+    font-size: 15px;
+  }
+}
+

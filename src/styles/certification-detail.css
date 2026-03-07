@@ -1,0 +1,176 @@
+/* Certification Details Page Styles */
+.certification-details {
+  min-height: 100vh;
+  background-color: #f7fafc;
+}
+
+/* Hero Section */
+.certification-details-hero {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.certification-details-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+}
+
+.certification-details-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #ffffff;
+  padding: 60px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.certification-details-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.certification-details-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.95;
+  color: #ffffff;
+}
+
+/* Content Section */
+.certification-details-content {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.certification-details-content-inner {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.certification-details-image-container {
+  width: 100%;
+}
+
+.certification-details-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.certification-details-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.certification-details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.certification-meta-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.certification-meta-label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.certification-meta-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.certification-details-description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4a5568;
+  white-space: pre-line;
+}
+
+.certification-benefits {
+  margin-top: 24px;
+}
+
+.certification-benefits-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.certification-benefits-list {
+  margin: 0;
+  padding-left: 20px;
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .certification-details-content-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .certification-details-title {
+    font-size: 2rem;
+  }
+
+  .certification-details-hero {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .certification-details-content {
+    padding: 40px 16px;
+  }
+
+  .certification-details-content-inner {
+    padding: 24px;
+  }
+
+  .certification-details-title {
+    font-size: 1.75rem;
+  }
+
+  .certification-details-subtitle {
+    font-size: 1rem;
+  }
+}
