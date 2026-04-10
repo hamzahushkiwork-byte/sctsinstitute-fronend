@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider, useAuth } from './contexts/AuthContext.jsx'
-import PublicLayout from './components/PublicLayout.jsx'
-import PageLoader from './components/PageLoader.jsx'
-import Home from './pages/Home'
-import AboutUs from './pages/AboutUs'
-import Services from './pages/Services'
-import ServiceDetail from './pages/ServiceDetail'
-import CoursesPrograms from './pages/CoursesPrograms'
-import Courses from './pages/CoursesPage'
-import CourseDetails from './pages/CourseDetails'
-import Certification from './pages/CertificationPage'
-import CertificationDetails from './pages/CertificationDetails'
-import Contact from './pages/Contact'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import AdminRoutes from './admin/adminRoutes.jsx'
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./contexts/AuthContext.jsx";
+import PublicLayout from "./components/PublicLayout.jsx";
+import PageLoader from "./components/PageLoader.jsx";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
+import CoursesPrograms from "./pages/CoursesPrograms";
+import Courses from "./pages/CoursesPage";
+import CourseDetails from "./pages/CourseDetails";
+import Certification from "./pages/CertificationPage";
+import CertificationDetails from "./pages/CertificationDetails";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AdminRoutes from "./admin/adminRoutes.jsx";
 
 // Component to handle admin route redirects
 function AdminRouteHandler() {
@@ -70,13 +70,16 @@ function App() {
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:slug" element={<CourseDetails />} />
             <Route path="/certification" element={<Certification />} />
-            <Route path="/certification/:slug" element={<CertificationDetails />} />
+            <Route
+              path="/certification/:slug"
+              element={<CertificationDetails />}
+            />
             <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>
       </div>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;

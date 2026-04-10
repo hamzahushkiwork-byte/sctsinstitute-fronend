@@ -4,9 +4,9 @@ const adminTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2563eb',
-      light: '#60a5fa',
-      dark: '#1e40af',
+      main: '#065947',
+      light: '#0d8f73',
+      dark: '#043d32',
       contrastText: '#ffffff',
     },
     secondary: {
@@ -31,9 +31,9 @@ const adminTheme = createTheme({
       dark: '#d97706',
     },
     info: {
-      main: '#3b82f6',
-      light: '#60a5fa',
-      dark: '#2563eb',
+      main: '#065947',
+      light: '#0d8f73',
+      dark: '#043d32',
     },
     background: {
       default: '#f8fafc',

@@ -31,13 +31,16 @@ userApiClient.interceptors.request.use(
 /**
  * Register for a course
  * @param {string} courseId - Course ID
+ * @param {string} [sessionDateKey] - Optional YYYY-MM-DD chosen on the course calendar
  * @returns {Promise<Object>} Registration data
  */
-export async function registerForCourse(courseId) {
+export async function registerForCourse(courseId, sessionDateKey) {
   try {
-    const response = await userApiClient.post('/course-registrations/register', {
-      courseId,
-    });
+    const body = { courseId };
+    if (sessionDateKey) {
+      body.sessionDateKey = sessionDateKey;
+    }
+    const response = await userApiClient.post('/course-registrations/register', body);
     
     if (response.data?.success && response.data?.data) {
       return response.data.data;

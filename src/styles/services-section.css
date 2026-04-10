@@ -126,7 +126,7 @@
 .service-card-link {
   font-size: 15px;
   font-weight: 600;
-  color: #00c6ff;
+  color: var(--color-primary-green);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -134,7 +134,7 @@
 }
 
 .service-card:hover .service-card-link {
-  color: #00d39f;
+  color: var(--color-primary-green-hover);
   transform: translateX(4px);
 }
 

@@ -95,7 +95,7 @@
 
 .welcome-content-tagline {
   font-weight: 600;
-  color: #0d9488;
+  color: var(--color-theme-red);
   margin-bottom: 32px;
 }
 

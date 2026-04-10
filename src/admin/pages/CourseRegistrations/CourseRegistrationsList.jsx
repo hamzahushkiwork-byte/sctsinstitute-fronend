@@ -101,6 +101,28 @@ export default function CourseRegistrationsList() {
     return user.name || user.email || 'N/A';
   };
 
+  /** YYYY-MM-DD from CourseDetails calendar registration; friendly label for admin */
+  const formatChosenSessionDate = (reg) => {
+    const key = reg?.sessionDateKey;
+    if (key == null || String(key).trim() === '') return '';
+    const s = String(key).trim();
+    const parts = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!parts) return s;
+    const y = Number(parts[1]);
+    const m = Number(parts[2]);
+    const d = Number(parts[3]);
+    try {
+      return new Date(y, m - 1, d).toLocaleDateString(undefined, {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      });
+    } catch {
+      return s;
+    }
+  };
+
   const columns = [
     {
       field: 'course',
@@ -219,6 +241,16 @@ export default function CourseRegistrationsList() {
       ),
     },
     {
+      field: 'sessionDateKey',
+      headerName: 'Session date',
+      width: 160,
+      sortable: false,
+      valueGetter: (params) => {
+        const label = formatChosenSessionDate(params?.row);
+        return label || '—';
+      },
+    },
+    {
       field: 'registeredAt',
       headerName: 'Registered',
       width: 180,
@@ -248,6 +280,8 @@ export default function CourseRegistrationsList() {
       ),
     },
   ];
+
+  const detailSessionLabel = formatChosenSessionDate(selectedRegistration);
 
   return (
     <PageTransition>
@@ -296,6 +330,21 @@ export default function CourseRegistrationsList() {
                 size="small"
               />
             </Typography>
+            <Typography variant="subtitle2" gutterBottom>
+              <strong>Chosen session (calendar):</strong>{' '}
+              {detailSessionLabel ||
+                'Not specified — user may have used “Register” without picking a day, or legacy registration.'}
+            </Typography>
+            {detailSessionLabel && selectedRegistration?.sessionDateKey ? (
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                display="block"
+                sx={{ mb: 1, mt: -0.5 }}
+              >
+                {String(selectedRegistration.sessionDateKey).trim()}
+              </Typography>
+            ) : null}
             <Typography variant="subtitle2" gutterBottom>
               <strong>Registered:</strong>{' '}
               {selectedRegistration?.registeredAt

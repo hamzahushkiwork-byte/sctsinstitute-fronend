@@ -1,0 +1,35 @@
+/* Scoped styling for session date picker in admin course form */
+.admin-course-session-calendar {
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  font-family: inherit;
+  padding: 4px;
+}
+
+.admin-course-session-calendar .react-calendar__navigation button:enabled:hover,
+.admin-course-session-calendar .react-calendar__navigation button:enabled:focus {
+  background-color: rgba(102, 126, 234, 0.12);
+}
+
+.admin-course-session-calendar
+  .react-calendar__tile.admin-course-calendar-tile-selected {
+  background: #065947;
+  color: #fff;
+  font-weight: 600;
+}
+
+.admin-course-session-calendar
+  .react-calendar__tile.admin-course-calendar-tile-selected:enabled:hover,
+.admin-course-session-calendar
+  .react-calendar__tile.admin-course-calendar-tile-selected:enabled:focus {
+  background: #054a3c;
+  color: #fff;
+}
+
+/* Library "active" tile (e.g. focus); keep distinct from multi-select highlight */
+.admin-course-session-calendar .react-calendar__tile--active:not(.admin-course-calendar-tile-selected) {
+  background: #e8eaf6;
+  color: inherit;
+}

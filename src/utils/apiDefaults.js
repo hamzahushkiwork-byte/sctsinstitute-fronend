@@ -67,6 +67,8 @@ const DEFAULTS = {
       imageUrl: coursePlaceholder,
       cardBody: 'Professional, accredited medical course.',
       duration: '2 Days',
+      /** ISO date strings or { date } objects from API; empty = no schedule restriction in UI */
+      availableDates: [],
       sortOrder: 0,
       isActive: true,
       createdAt: '',

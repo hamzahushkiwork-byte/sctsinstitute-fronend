@@ -1,6 +1,11 @@
-import axios from 'axios';
-import { getAccessToken, getRefreshToken, setTokens, clearTokens } from '../admin/authStorage.js';
-import { API_BASE_URL } from '../config/api.js';
+import axios from "axios";
+import {
+  getAccessToken,
+  getRefreshToken,
+  setTokens,
+  clearTokens,
+} from "../admin/authStorage.js";
+import { API_BASE_URL } from "../config/api.js";
 
 const baseURL = API_BASE_URL;
 
@@ -8,7 +13,7 @@ const apiClient = axios.create({
   baseURL,
   timeout: 15000,
   headers: {
-    Accept: 'application/json',
+    Accept: "application/json",
   },
   withCredentials: true,
 });
@@ -24,7 +29,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor with token refresh
@@ -46,7 +51,7 @@ apiClient.interceptors.response.use(
   (response) => {
     // If response has success:false, throw error
     if (response.data && response.data.success === false) {
-      const message = response.data.message || 'API request failed';
+      const message = response.data.message || "API request failed";
       throw new Error(message);
     }
     return response;
@@ -55,7 +60,10 @@ apiClient.interceptors.response.use(
     const originalRequest = error.config;
 
     // Handle 401 errors for admin routes
-    if (error.response?.status === 401 && originalRequest.url?.includes('/admin')) {
+    if (
+      error.response?.status === 401 &&
+      originalRequest.url?.includes("/admin")
+    ) {
       if (isRefreshing) {
         // Queue the request
         return new Promise((resolve, reject) => {
@@ -75,7 +83,7 @@ apiClient.interceptors.response.use(
 
       if (!refreshToken) {
         clearTokens();
-        window.location.href = '/admin/login';
+        window.location.href = "/admin/login";
         return Promise.reject(error);
       }
 
@@ -92,12 +100,12 @@ apiClient.interceptors.response.use(
           isRefreshing = false;
           return apiClient(originalRequest);
         } else {
-          throw new Error('Failed to refresh token');
+          throw new Error("Failed to refresh token");
         }
       } catch (refreshError) {
         processQueue(refreshError, null);
         clearTokens();
-        window.location.href = '/admin/login';
+        window.location.href = "/admin/login";
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;
@@ -106,14 +114,15 @@ apiClient.interceptors.response.use(
 
     // Handle other errors
     if (error.response) {
-      const message = error.response.data?.message || error.message || 'Request failed';
+      const message =
+        error.response.data?.message || error.message || "Request failed";
       throw new Error(message);
     } else if (error.request) {
-      throw new Error('Network error: No response from server');
+      throw new Error("Network error: No response from server");
     } else {
-      throw new Error(error.message || 'An unexpected error occurred');
+      throw new Error(error.message || "An unexpected error occurred");
     }
-  }
+  },
 );
 
 export default apiClient;

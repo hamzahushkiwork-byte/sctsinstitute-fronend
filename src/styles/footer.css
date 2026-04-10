@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.5;
@@ -13,11 +13,11 @@ body {
 
 body:lang(ar),
 [dir="rtl"] {
-  font-family: 'Cairo', sans-serif;
+  font-family: "Cairo", sans-serif;
 }
 
 .site-footer {
-  background: #111827;
+  background: #061e19;
   color: #e5e7eb;
   padding: 48px 0 32px;
 }
@@ -79,7 +79,9 @@ body:lang(ar),
 .footer-link {
   text-decoration: none;
   color: #9ca3af;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-link:hover {
@@ -123,7 +125,10 @@ body:lang(ar),
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  transition: color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .footer-social-link svg {
@@ -165,7 +170,8 @@ body:lang(ar),
 }
 
 @media (max-width: 768px) {
-  .site-footer {}
+  .site-footer {
+  }
 
   .footer-nav {
     flex-direction: column;

@@ -1,0 +1,19 @@
+:root {
+  /* Primary Green (Main Brand Color) */
+  --color-primary-green: #065947;
+  --color-primary-green-rgb: 6, 89, 71;
+  --color-primary-green-hover: #054a3c;
+  
+  /* Theme Red (Accent Brand Color) */
+  --color-theme-red: #ee2821;
+  --color-theme-red-rgb: 238, 40, 33;
+  --color-theme-red-hover: #cf221c;
+  --color-theme-red-light: rgba(238, 40, 33, 0.1);
+  --color-theme-red-soft: rgba(238, 40, 33, 0.05);
+  
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-dark: #111827;
+  --color-gray-soft: #f8fafc;
+  --color-gray-border: #e2e8f0;
+}

@@ -34,7 +34,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to bottom, #00c6ff, #00d39f);
+  background: var(--color-primary-green);
   height: 0;
   transition: height 0.25s ease-out;
 }

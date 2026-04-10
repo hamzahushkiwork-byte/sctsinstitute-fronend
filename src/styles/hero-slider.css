@@ -162,11 +162,11 @@
   font-size: 16px;
   font-weight: 600;
   color: #ffffff;
-  background: linear-gradient(135deg, #00c6ff, #00d39f);
+  background: var(--color-primary-green);
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(var(--color-primary-green-rgb), 0.28);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
   display: inline-block;
@@ -174,7 +174,7 @@
 
 .btn-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-green-rgb), 0.35);
 }
 
 .btn-primary:active {
@@ -237,7 +237,7 @@
 
 /* Active bullet: brighter, bigger, with pulse animation */
 .hero-slider-swiper .swiper-pagination-bullet-active {
-  background: linear-gradient(135deg, #00c6ff, #00d39f) !important;
+  background: var(--color-primary-green) !important;
   border-color: rgba(0, 0, 0, 0.35);
   opacity: 1 !important;
   transform: scale(1.35);
@@ -248,17 +248,17 @@
 @keyframes hero-bullet-pulse {
   0% {
     transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(0, 198, 255, 0.5);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-green-rgb), 0.45);
   }
 
   70% {
     transform: scale(1.35);
-    box-shadow: 0 0 0 8px rgba(0, 198, 255, 0);
+    box-shadow: 0 0 0 8px rgba(var(--color-primary-green-rgb), 0);
   }
 
   100% {
     transform: scale(1.35);
-    box-shadow: 0 0 0 0 rgba(0, 198, 255, 0);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-green-rgb), 0);
   }
 }
 

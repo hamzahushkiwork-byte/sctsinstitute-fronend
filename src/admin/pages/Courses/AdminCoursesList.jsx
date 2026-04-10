@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
+  Chip,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -15,6 +16,9 @@ import {
   Tab,
   Typography,
 } from '@mui/material';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './admin-course-calendar.css';
 import * as coursesAPI from '../../../api/admin/courses.admin.api.js';
 import PageTransition from '../../components/PageTransition.jsx';
 import PageHeader from '../../components/PageHeader.jsx';
@@ -22,6 +26,41 @@ import SmartTable from '../../components/SmartTable.jsx';
 import ConfirmDialog from '../../components/ConfirmDialog.jsx';
 import useToast from '../../hooks/useToast.jsx';
 import { toAbsoluteMediaUrl } from '../../../utils/mediaUrl.js';
+
+/** Local calendar day key YYYY-MM-DD (matches public course details calendar). */
+function toLocalDateKey(date) {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) return null;
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function dateKeyToLocalDate(key) {
+  const parts = String(key).split('-').map(Number);
+  if (parts.length !== 3 || parts.some((n) => !n)) return null;
+  const [y, mo, day] = parts;
+  return new Date(y, mo - 1, day);
+}
+
+function apiDatesToSortedKeys(dates) {
+  if (!Array.isArray(dates) || dates.length === 0) return [];
+  const set = new Set();
+  for (const raw of dates) {
+    if (raw == null) continue;
+    const d = raw instanceof Date ? raw : new Date(raw);
+    const key = toLocalDateKey(d);
+    if (key) set.add(key);
+  }
+  return [...set].sort();
+}
+
+function toggleDateKeySorted(keys, key) {
+  const next = new Set(keys);
+  if (next.has(key)) next.delete(key);
+  else next.add(key);
+  return [...next].sort();
+}
 
 export default function AdminCoursesList() {
   const { id } = useParams();
@@ -41,7 +80,11 @@ export default function AdminCoursesList() {
     sortOrder: 0,
     isActive: true,
     isAvailable: true, // ✅ added
+    /** Sorted YYYY-MM-DD strings; sent as availableDates JSON array */
+    availableDateKeys: [],
   });
+
+  const [scheduleCalendarMonth, setScheduleCalendarMonth] = useState(() => new Date());
 
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
@@ -68,7 +111,9 @@ export default function AdminCoursesList() {
       sortOrder: 0,
       isActive: true,
       isAvailable: true, // ✅ default
+      availableDateKeys: [],
     });
+    setScheduleCalendarMonth(new Date());
     setImageFile(null);
     setImagePreview('');
     setActiveTab(0);
@@ -89,6 +134,7 @@ export default function AdminCoursesList() {
     try {
       const course = await coursesAPI.getAdminCourseById(courseId);
 
+      const dateKeys = apiDatesToSortedKeys(course.availableDates);
       setFormData({
         title: course.title || '',
         slug: course.slug || '',
@@ -97,7 +143,15 @@ export default function AdminCoursesList() {
         sortOrder: course.sortOrder || 0,
         isActive: course.isActive !== undefined ? course.isActive : true,
         isAvailable: course.isAvailable !== undefined ? course.isAvailable : true, // ✅ added
+        availableDateKeys: dateKeys,
       });
+
+      if (dateKeys.length > 0) {
+        const first = dateKeyToLocalDate(dateKeys[0]);
+        if (first) setScheduleCalendarMonth(first);
+      } else {
+        setScheduleCalendarMonth(new Date());
+      }
 
       setImagePreview(course.imageUrl ? toAbsoluteMediaUrl(course.imageUrl) : '');
       setImageFile(null);
@@ -129,6 +183,11 @@ export default function AdminCoursesList() {
       formDataToSend.append('sortOrder', String(formData.sortOrder ?? 0));
       formDataToSend.append('isActive', String(formData.isActive !== false));
       formDataToSend.append('isAvailable', String(formData.isAvailable !== false)); // ✅ added
+
+      formDataToSend.append(
+        'availableDates',
+        JSON.stringify(formData.availableDateKeys || []),
+      );
 
       if (imageFile && imageFile instanceof File) {
         formDataToSend.append('image', imageFile);
@@ -382,6 +441,83 @@ export default function AdminCoursesList() {
                   margin="normal"
                   helperText="Lower numbers appear first"
                 />
+
+                <Box sx={{ mt: 2, mb: 1 }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 0.5 }}>
+                    Session dates (public course calendar)
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1.5 }}>
+                    Click days to select or deselect. Save the course to publish them on the site.
+                  </Typography>
+                  <Box
+                    className="admin-course-session-calendar"
+                    dir="ltr"
+                    sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}
+                  >
+                    <Calendar
+                      value={null}
+                      onChange={() => {}}
+                      defaultView="month"
+                      activeStartDate={scheduleCalendarMonth}
+                      onActiveStartDateChange={({ activeStartDate }) =>
+                        setScheduleCalendarMonth(activeStartDate)
+                      }
+                      onClickDay={(value) => {
+                        const key = toLocalDateKey(value);
+                        if (!key) return;
+                        setFormData((prev) => ({
+                          ...prev,
+                          availableDateKeys: toggleDateKeySorted(
+                            prev.availableDateKeys,
+                            key,
+                          ),
+                        }));
+                      }}
+                      tileClassName={({ date, view }) => {
+                        if (view !== 'month') return null;
+                        const key = toLocalDateKey(date);
+                        return key && formData.availableDateKeys.includes(key)
+                          ? 'admin-course-calendar-tile-selected'
+                          : null;
+                      }}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 1,
+                      alignItems: 'center',
+                      minHeight: formData.availableDateKeys.length ? 'auto' : 24,
+                    }}
+                  >
+                    {formData.availableDateKeys.map((key) => (
+                      <Chip
+                        key={key}
+                        label={key}
+                        size="small"
+                        onDelete={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            availableDateKeys: prev.availableDateKeys.filter(
+                              (k) => k !== key,
+                            ),
+                          }))
+                        }
+                      />
+                    ))}
+                    {formData.availableDateKeys.length > 0 && (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          setFormData((prev) => ({ ...prev, availableDateKeys: [] }))
+                        }
+                      >
+                        Clear all
+                      </Button>
+                    )}
+                  </Box>
+                </Box>
 
                 <Box sx={{ display: 'flex', gap: 4 }}>
                   <FormControlLabel

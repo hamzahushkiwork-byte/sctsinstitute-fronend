@@ -56,7 +56,7 @@ export default function AdminLogin() {
         <Card sx={{ width: '100%', maxWidth: 400 }}>
           <CardContent sx={{ p: 4 }}>
             <Box sx={{ textAlign: 'center', mb: 3 }}>
-              <LoginIcon sx={{ fontSize: 48, color: '#1976d2', mb: 2 }} />
+              <LoginIcon sx={{ fontSize: 48, color: '#065947', mb: 2 }} />
               <Typography variant="h4" component="h1" gutterBottom>
                 Admin Login
               </Typography>

@@ -151,8 +151,8 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #00c6ff;
-  box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.1);
+  border-color: var(--color-primary-green);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-green-rgb), 0.12);
 }
 
 .form-textarea {
@@ -168,14 +168,14 @@
 
 .form-submit-btn {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #00c6ff, #00d39f);
+  background: var(--color-primary-green);
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(var(--color-primary-green-rgb), 0.28);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   align-self: flex-end;
   margin-top: 8px;
@@ -183,7 +183,7 @@
 
 .form-submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(var(--color-primary-green-rgb), 0.35);
 }
 
 .form-submit-btn:active {
@@ -224,7 +224,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #00c6ff, #00d39f);
+  background: var(--color-primary-green);
   border-radius: 12px;
   color: #ffffff;
 }
@@ -257,7 +257,7 @@
 }
 
 .contact-info-value a:hover {
-  color: #00c6ff;
+  color: var(--color-primary-green);
 }
 
 /* Responsive Design */

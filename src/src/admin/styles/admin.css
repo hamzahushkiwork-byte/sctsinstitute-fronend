@@ -7,13 +7,13 @@
 }
 
 .admin-sidebar .MuiListItemButton-root.admin-nav-active {
-  background-color: rgba(25, 118, 210, 0.08);
-  border-right: 3px solid #1976d2;
+  background-color: rgba(6, 89, 71, 0.1);
+  border-right: 3px solid #065947;
 }
 
 .admin-sidebar .MuiListItemButton-root.admin-nav-active .MuiListItemText-primary {
   font-weight: 600;
-  color: #1976d2;
+  color: #065947;
 }
 
 .admin-sidebar .MuiListItemIcon-root {
@@ -22,8 +22,7 @@
 }
 
 .admin-sidebar .MuiListItemButton-root.admin-nav-active .MuiListItemIcon-root {
-  color: #1976d2;
+  color: #065947;
 }
-
 
 
